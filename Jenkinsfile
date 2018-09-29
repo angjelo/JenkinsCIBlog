@@ -1,3 +1,4 @@
+pipeline{
 node{
   stage ('Scm Checkout'){
     def props = readJSON text: '{ "key": "value" }'
@@ -6,4 +7,5 @@ node{
   stage('Compile-Package'){
     sh 'mvn package'
   }
+}
 }
