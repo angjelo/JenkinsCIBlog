@@ -1,11 +1,22 @@
-pipeline{
-node{
-  stage ('Scm Checkout'){
-    def props = readJSON text: '{ "key": "value" }'
-   git 'https://github.com/angjelo/JenkinsCIBlog'
-  }
-  stage('Compile-Package'){
-    sh 'mvn package'
-  }
-}
-}
+pipeline {
+    agent any
+
+    stages {
+        stage ('Compile Stage') {
+
+            steps {
+                withMaven(maven : 'maven_3_5_0') {
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+
+        stage ('Testing Stage') {
+
+            steps {
+                withMaven(maven : 'maven_3_5_0') {
+                    sh 'mvn test'
+                }
+            }
+        }
+    }
