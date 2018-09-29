@@ -1,5 +1,6 @@
 node{
-  stage ('scm checkout'){
+  stage ('Scm Checkout'){
+    
    git 'https://github.com/angjelo/JenkinsCIBlog'
   }
   stage('Compile-Package'){
