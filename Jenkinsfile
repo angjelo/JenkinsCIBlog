@@ -1,22 +1,19 @@
 pipeline {
     agent any
-
     stages {
-        stage('Compile Stage') {
+        stage ('Compile Stage') {
             steps {
-                sh 'mvn clean compile'
+                sh 'mvn -ntp clean compile'
             }
         }
-
         stage('Build') {
             steps {
                 sh 'echo "Building the project"'
             }
         }
-
-        stage('Testing Stage') {
+        stage ('Testing Stage') {
             steps {
-                sh 'mvn test'
+                sh 'mvn -ntp test'
             }
         }
     }
